@@ -1,0 +1,66 @@
+{
+  "name": "spotify-client",
+  "version": "0.0.0-development",
+  "description": "A simple wrapper of Spotify's REST API",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "report-coverage": "nyc report --reporter=lcov --reporter=text-lcov npm t | codecov",
+    "watch:test": "npm t -- -w",
+    "test": "mocha src/index.test.js --compilers js:babel-register",
+    "cover": "nyc npm t",
+    "prebuild": "rimraf dist",
+    "build": "npm-run-all --parallel build:*",
+    "build:main": "babel --copy-files --out-dir dist --ignore *.test.js src",
+    "build:umd": "webpack --output-filename index.umd.js",
+    "build:umd.min": "webpack --output-filename index.umd.min.js -p",
+    "precommit": "npm run cover && npm run check-coverage",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DakotaLMartinez/spotify-client.git"
+  },
+  "keywords": [
+    "spotify",
+    "api",
+    "client"
+  ],
+  "author": "Dakota Lee Martinez <dakotaleewebdev@gmail.com> (http://becomingaprogrammer.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DakotaLMartinez/spotify-client/issues"
+  },
+  "homepage": "https://github.com/DakotaLMartinez/spotify-client#readme",
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-loader": "7.0.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-stage-2": "6.24.1",
+    "chai": "3.5.0",
+    "codecov.io": "0.1.6",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
+    "husky": "0.13.3",
+    "istanbul": "0.4.5",
+    "json-loader": "0.5.4",
+    "mocha": "3.3.0",
+    "npm-run-all": "4.0.2",
+    "nyc": "10.3.2",
+    "rimraf": "2.6.1",
+    "semantic-release": "6.3.6",
+    "webpack": "2.5.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  }
+}
