@@ -17,7 +17,7 @@ The spotify API client adds the following methods you can utilize:
 * [findArtist(query [, options])](#findartistquery--options)
 * [findAlbum(query [, options])](#findalbumquery--options)
 * [findTrack(query [, options])](#findtrackquery--options)
-* [getTracks(query [, options])](#gettracksquery--options)
+* [getTracks(artistId [, country])](#gettracksartistid--country)
 
 Please consult the [Spotify Web API docs](https://developer.spotify.com/web-api/search-item/) for further reference on what data you can expect in response to calling the following methods.
 
